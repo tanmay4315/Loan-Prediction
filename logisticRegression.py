@@ -93,7 +93,7 @@ beta=[0]*(ncols+1)
 for i in range(1):
     beta[-1]=beta[-1]+0.0000001*sum([(train_y[j]-(1/(1+math.exp(-(sum([train_x[j][l]*beta[l] for l in range(len(train_x[1]))]))))))*1 for j in range(len(train_x))])
     for k in range(len(train_x[1])): #here k used for updating value of beta
-        beta[k]=beta[k]+0.00000001*sum([(train_y[j]-(1/(1+math.exp(-(sum([train_x[j][l]*beta[l] for l in range(len(train_x[1]))]))))))*train_x[j][k] +beta[-1] for j in range(len(train_x))])
+        beta[k]=beta[k]+0.00000001*sum([(train_y[j]-(1/(1+math.exp(-(sum([train_x[j][l]*beta[l] for l in range(len(train_x[1]))])+beta[-1])))))*train_x[j][k]  for j in range(len(train_x))])
 
 #testing Model
 correct=0
